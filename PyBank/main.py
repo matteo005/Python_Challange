@@ -24,7 +24,16 @@ with open(csvpath, 'r') as csvfile:
         Months.append(row[0])
         Profits.append(int(row[1]))
 
+    for i in range(len(Profits)-1):
+
+        Change.append(Profits[i+1]-Profits[i])
+
+print(sum(Change))
+print(len(Change))
+avg_change = sum(Change)/len(Change)
+print(avg_change)
 
 print(f"Total Months:  {len(Months)}")
 print(f"Total: ${sum(Profits)}")
+
 
