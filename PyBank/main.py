@@ -35,14 +35,20 @@ with open(csvpath, 'r') as csvfile:
 #Find Greatest Increase and Decrease from Profits
 GreatIncrease = max(Change)
 GreatDecrease = min(Change)
+FormatedIncrease = "$""{:,}".format(GreatIncrease)
+FormatedDecrease = "$""{:,}".format(GreatDecrease)
+
 
 #Find the corresponding monthst to each Greatest Increase and Decrease 
 MonthIncrease = Change.index(max(Change)) +1
+MonthDecrease = Change.index(min(Change)) +1
 
-print(GreatIncrease)    
-print(GreatDecrease)
+print(FormatedIncrease)    
+print(FormatedDecrease)
 
 print(Months[MonthIncrease])
+print(Months[MonthDecrease])
+
 
 
 #Total up the Change List
@@ -51,12 +57,13 @@ print(Months[MonthIncrease])
 #print(len(Change))
 
 #Get the Average for Change
-avg_change = round(sum(Change)/len(Change),2)
+AvgChange = round(sum(Change)/len(Change),2)
+AvgChangeFormated = "$""{:,}".format(AvgChange)
 
 print("Financial Analysis")
 print("-------------------------------")
 print(f"Total Months:  {len(Months)}")
 print(f"Total: ${sum(Profits)}")
-print(f"Average Change: ${avg_change}")
+print(f"Average Change: {AvgChangeFormated}")
 
 
