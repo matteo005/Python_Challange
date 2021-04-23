@@ -56,6 +56,9 @@ MonthDecrease = Change.index(min(Change)) +1
 #Count how many values there are in the Change List
 #print(len(Change))
 
+#Format Total Profit amount
+TotalProfit = "$""{:,}".format(sum(Profits))
+
 #Get the Average for Change
 AvgChange = round(sum(Change)/len(Change),2)
 AvgChangeFormated = "$""{:,}".format(AvgChange)
@@ -65,8 +68,29 @@ AvgChangeFormated = "$""{:,}".format(AvgChange)
 print("                Financial Analysis")
 print("--------------------------------------------------")
 print(f"Total Months:  {len(Months)}")
-print(f"Total: ${sum(Profits)}")
+print(f"Total: {TotalProfit}")
 print(f"Average Change: {AvgChangeFormated}")
 print(f"Greatest Increase in Profits: {Months[MonthIncrease]} {FormatedIncrease}")
 print(f"Greatest Increase in Profits: {Months[MonthDecrease]} {FormatedDecrease}")
 print("--------------------------------------------------")
+
+
+    #Create PyBank.txt file
+with open("PyBank.txt", "w") as file:
+
+    # # Write all values
+    file.write("                        Financial Analysis")
+    file.write("\n")
+    file.write("----------------------------------------------------------------")
+    file.write("\n")
+    file.write(f"Total Months:  {len(Months)}")
+    file.write("\n")
+    file.write(f"Total: {TotalProfit}")
+    file.write("\n")
+    file.write(f"Average Change: {AvgChangeFormated}")
+    file.write("\n")
+    file.write(f"Greatest Increase in Profits was on: {Months[MonthIncrease]} for ({FormatedIncrease})")
+    file.write("\n")
+    file.write(f"Greatest Decrease in Profits was on: {Months[MonthDecrease]} for ({FormatedDecrease})")
+    file.write("\n")
+    file.write("----------------------------------------------------------------")
