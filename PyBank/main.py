@@ -43,13 +43,13 @@ FormatedDecrease = "$""{:,}".format(GreatDecrease)
 MonthIncrease = Change.index(max(Change)) +1
 MonthDecrease = Change.index(min(Change)) +1
 
-print(FormatedIncrease)    
-print(FormatedDecrease)
+# Print out the Formated Max Profit Increase and Decreases
+# print(FormatedIncrease)    
+# print(FormatedDecrease)
 
-print(Months[MonthIncrease])
-print(Months[MonthDecrease])
-
-
+# #Print out the Formated Max Months Increase and Decreases
+# print(Months[MonthIncrease])
+# print(Months[MonthDecrease])
 
 #Total up the Change List
 #print(sum(Change))
@@ -60,10 +60,13 @@ print(Months[MonthDecrease])
 AvgChange = round(sum(Change)/len(Change),2)
 AvgChangeFormated = "$""{:,}".format(AvgChange)
 
-print("Financial Analysis")
-print("-------------------------------")
+
+
+print("                Financial Analysis")
+print("--------------------------------------------------")
 print(f"Total Months:  {len(Months)}")
 print(f"Total: ${sum(Profits)}")
 print(f"Average Change: {AvgChangeFormated}")
-
-
+print(f"Greatest Increase in Profits: {Months[MonthIncrease]} {FormatedIncrease}")
+print(f"Greatest Increase in Profits: {Months[MonthDecrease]} {FormatedDecrease}")
+print("--------------------------------------------------")
