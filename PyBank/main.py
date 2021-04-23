@@ -5,6 +5,9 @@ import csv
 Months = []
 Profits = []
 Change = []
+GreatIncrease = []
+GreatDecrease = []
+
 
 # Module for reading CSV files
 csvpath = os.path.join('Resources', 'budget_data.csv')
@@ -24,16 +27,36 @@ with open(csvpath, 'r') as csvfile:
         Months.append(row[0])
         Profits.append(int(row[1]))
 
+    #Run Through all the Profits and append it to the Change list
     for i in range(len(Profits)-1):
 
         Change.append(Profits[i+1]-Profits[i])
 
-print(sum(Change))
-print(len(Change))
-avg_change = sum(Change)/len(Change)
-print(avg_change)
+#Find Greatest Increase and Decrease from Profits
+GreatIncrease = max(Change)
+GreatDecrease = min(Change)
 
+#Find the corresponding monthst to each Greatest Increase and Decrease 
+MonthIncrease = Change.index(max(Change)) +1
+
+print(GreatIncrease)    
+print(GreatDecrease)
+
+print(Months[MonthIncrease])
+
+
+#Total up the Change List
+#print(sum(Change))
+#Count how many values there are in the Change List
+#print(len(Change))
+
+#Get the Average for Change
+avg_change = round(sum(Change)/len(Change),2)
+
+print("Financial Analysis")
+print("-------------------------------")
 print(f"Total Months:  {len(Months)}")
 print(f"Total: ${sum(Profits)}")
+print(f"Average Change: ${avg_change}")
 
 
