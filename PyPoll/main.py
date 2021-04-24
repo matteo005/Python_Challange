@@ -2,11 +2,11 @@ import os
 import csv
 
 #Create all Lists needed
-Candidates = []
-Votes = []
+
 rep = []
-
-
+repvotes = {}
+TotalVotes = 0
+WinCount = 0
 
 # Module for reading CSV files
 csvpath = os.path.join('Resources', 'election_data.csv')
@@ -22,13 +22,38 @@ with open(csvpath, 'r') as csvfile:
     # Read each row of data after the header
     for row in csvreader:
 
-        #Fill Lists with data
-        Candidates.append(str(row[2]))
-        Votes.append(int(row[0]))
+        #Count total votes
+        TotalVotes += 1
+        
+        #Get the names of Candidates from column 3
+        Candidates = row[2]
 
-for i in Candidates:
-    if i not in rep:        
-        rep.append(i)
-for i in rep:
-    print(i)
+        #Run through Candidates and append only 1 instance of each
+        if Candidates not in rep:        
+            rep.append(Candidates)
+            
+            #Create dictionary to store the vote counts for each Candidate
+            repvotes[Candidates] = 0
 
+        repvotes[Candidates] += 1
+
+
+    print("         Election Results")
+    print("---------------------------------")
+    print(f"Total Votes: {TotalVotes}")
+    print("---------------------------------")
+        
+
+    for candidate in repvotes:
+
+        #Get vote count from each Candidate and calculate percentage
+        votes = repvotes.get(candidate)
+        VotePercent = float(votes)/float(TotalVotes)*100
+
+        # Determine winning vote count and candidate
+        if (votes > WinCount):
+            WinCount = votes
+            winning_candidate = candidate
+
+        print(f"{candidate}: {VotePercent:.3f}% ({votes})")
+        
