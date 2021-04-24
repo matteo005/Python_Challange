@@ -42,6 +42,17 @@ with open(csvpath, 'r') as csvfile:
     print(f"Total Votes: {TotalVotes}")
     print("------------------------------")
         
+#Create PyBank.txt file
+with open("PyBank.txt", "w") as file:
+
+    # # Write all values
+    file.write("       Election Results")
+    file.write("\n")
+    file.write("-----------------------------")
+    file.write("\n")
+    file.write(f"Total Votes: {TotalVotes}")
+    file.write("\n")
+    file.write("-----------------------------\n")
 
     for candidate in repvotes:
 
@@ -55,5 +66,10 @@ with open(csvpath, 'r') as csvfile:
             Winner = candidate
 
         print(f"{candidate}: {VotePercent:.3f}% ({votes})")
+        file.write(f"{candidate}: {VotePercent:.3f}% ({votes})\n")
+    file.write("-----------------------------\n")   
+    file.write(f"Winner: {Winner}\n") 
     print("------------------------------")
     print(f"Winner: {Winner}\n")
+
+    
