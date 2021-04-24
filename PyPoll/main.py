@@ -1,8 +1,7 @@
 import os
 import csv
 
-#Create all Lists needed
-
+#Create all Lists, Dictionary and values to store info
 rep = []
 repvotes = {}
 TotalVotes = 0
@@ -34,14 +33,14 @@ with open(csvpath, 'r') as csvfile:
             
             #Create dictionary to store the vote counts for each Candidate
             repvotes[Candidates] = 0
-
+        #Add one vote to the candidate count
         repvotes[Candidates] += 1
 
 
     print("         Election Results")
-    print("---------------------------------")
+    print("------------------------------")
     print(f"Total Votes: {TotalVotes}")
-    print("---------------------------------")
+    print("------------------------------")
         
 
     for candidate in repvotes:
@@ -53,7 +52,8 @@ with open(csvpath, 'r') as csvfile:
         # Determine winning vote count and candidate
         if (votes > WinCount):
             WinCount = votes
-            winning_candidate = candidate
+            Winner = candidate
 
         print(f"{candidate}: {VotePercent:.3f}% ({votes})")
-        
+    print("------------------------------")
+    print(f"Winner: {Winner}\n")
